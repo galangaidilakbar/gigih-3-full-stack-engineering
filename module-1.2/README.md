@@ -18,7 +18,9 @@ npm install
 
 ## Usage
 
-Run the script.js file
+1. Open `script.js` file
+2. Comment and uncomment the code to see the result
+3. Run the script.js file with the following command:
 
 ```
 node script.js
