@@ -30,8 +30,13 @@
                     `;
                 }
 
-                document.getElementById('playlistContainer').innerHTML = html;
                 document.getElementById('dropdown-playlists').innerHTML = dropdownPlaylists;
+
+                // check if the element "playlistContainer" is exists
+                const playlistContainer = document.getElementById('playlistContainer');
+                if (!playlistContainer) return;
+                playlistContainer.innerHTML = html;
+
             })
             .catch(error => console.log(error));
     });
