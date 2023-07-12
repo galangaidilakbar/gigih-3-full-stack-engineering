@@ -10,5 +10,17 @@
   {
     "id": 3,
     "name": "Party"
+  },
+  {
+    "id": 4,
+    "name": "Discover Weekly"
+  },
+  {
+    "id": 5,
+    "name": "Daily Mix 1"
+  },
+  {
+    "id": 6,
+    "name": "Daily Mix 2"
   }
 ]
