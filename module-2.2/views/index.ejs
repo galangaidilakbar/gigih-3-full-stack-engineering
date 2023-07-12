@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('layouts/header'); -%>
+
+<div class="p-4">
+    <!-- Announcements section -->
+    <div class="flex items-center justify-center h-48 mb-4 rounded bg-zinc-900">
+        <p class="text-2xl text-gray-500">
+            Announcement section 🎉!
+        </p>
+    </div>
+    <!-- End of announcements section -->
+
+    <!-- Playlist section -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4" id="playlistContainer"></div>
+    <!-- End of playlist section -->
+
+    <!-- Made for you section -->
+    <div class="mb-8">
+        <h3 class="text-2xl text-white mb-4">
+            Made For You
+        </h3>
+
+        <div class="flex overflow-y-scroll gap-x-8">
+            <% for (let i = 0; i < 12; i++) { %>
+                <div class="bg-zinc-900 h-42 rounded p-4 w-2/3 sm:w-auto shrink-0 sm: shrink">
+                    <a href="/playlist">
+                        <img src="https://picsum.photos/200" alt="" class="rounded mb-2">
+                        <h3 class="text-lg sm:text-xl text-white font-medium">
+                            Playlist name
+                        </h3>
+                        <p class="text-xs text-gray-500 text-elipsis">
+                            Singer name, Singer...
+                        </p>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <!-- End of made for you section -->
+</div>
+
+<%- include('layouts/footer'); -%>

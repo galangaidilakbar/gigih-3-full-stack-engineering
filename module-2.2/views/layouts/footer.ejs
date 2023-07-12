@@ -1,0 +1,41 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // get playlists
+        fetch('/api/v1/playlists')
+            .then(response => response.json())
+            .then(playlists => {
+                let html = ``;
+                let dropdownPlaylists = ``;
+
+                for (let i = 0; i < 6; i++) {
+                    html += `
+                        <a href="/playlist">
+                            <div class="flex items-center justify-center h-24 rounded bg-zinc-900">
+                                <p class="text-xl text-gray-500">
+                                    ${playlists.data[i].name}
+                                </p>
+                            </div>
+                        </a>
+                    `;
+
+                    dropdownPlaylists += `
+                        <li>
+                            <a href="/playlist"
+                               class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
+                                ${playlists.data[i].name}
+                            </a>
+                        </li>
+                    `;
+                }
+
+                document.getElementById('playlistContainer').innerHTML = html;
+                document.getElementById('dropdown-playlists').innerHTML = dropdownPlaylists;
+            })
+            .catch(error => console.log(error));
+    });
+</script>
+
+</body>
+</html>
