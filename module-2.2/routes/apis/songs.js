@@ -2,6 +2,14 @@ const songsData = require('../../datasets/songsData.json');
 const express = require('express');
 const router = express.Router();
 
+/* GET songs listing. */
+router.get('/', function (req, res) {
+    return res.json({
+        message: "Songs retrieved successfully",
+        data: songsData
+    });
+});
+
 /* GET song by id */
 router.get('/:id', function (req, res) {
     const song = songsData.find((song) => song.id === parseInt(req.params.id));

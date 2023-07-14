@@ -1,16 +1,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // get playlists
-        fetch('/api/v1/playlists')
-            .then(response => response.json())
-            .then(playlists => {
-                let html = ``;
-                let dropdownPlaylists = ``;
+    async function getPlaylists() {
+        try {
+            const response = await fetch('/api/v1/playlists');
 
-                for (let i = 0; i < 6; i++) {
-                    html += `
+            const playlists = await response.json();
+
+            let html = ``;
+            let dropdownPlaylists = ``;
+            let addToPlaylist = ``;
+
+            for (let i = 0; i < 6; i++) {
+                html += `
                         <a href="/playlists/${playlists.data[i].id}">
                             <div class="flex items-center justify-center h-24 rounded bg-zinc-900">
                                 <p class="text-xl text-gray-500">
@@ -20,7 +22,7 @@
                         </a>
                     `;
 
-                    dropdownPlaylists += `
+                dropdownPlaylists += `
                         <li>
                             <a href="/playlists/${playlists.data[i].id}"
                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
@@ -28,18 +30,33 @@
                             </a>
                         </li>
                     `;
-                }
 
-                document.getElementById('dropdown-playlists').innerHTML = dropdownPlaylists;
+                addToPlaylist += `
+                        <li>
+                            <a onclick="addToPlaylist('${playlists.data[i].id}', this)"
+                               class="block px-4 py-2 hover:bg-gray-600 hover:text-white">${playlists.data[i].name}</a>
+                        </li>
+                `;
+            }
 
-                // check if the element "playlistContainer" is exists
-                const playlistContainer = document.getElementById('playlistContainer');
-                if (!playlistContainer) return;
-                playlistContainer.innerHTML = html;
+            document.getElementById('dropdown-playlists').innerHTML = dropdownPlaylists;
 
-            })
-            .catch(error => console.log(error));
-    });
+            // check if the element "playlistContainer" is exists
+            const playlistContainer = document.getElementById('playlistContainer');
+            if (!playlistContainer) return;
+            playlistContainer.innerHTML = html;
+
+            const addToPlaylistContainers = document.querySelectorAll('.add-to-playlist');
+
+            addToPlaylistContainers.forEach(container => {
+                container.innerHTML = addToPlaylist;
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    getPlaylists();
 </script>
 
 </body>

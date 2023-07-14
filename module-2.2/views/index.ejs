@@ -36,6 +36,126 @@
         </div>
     </div>
     <!-- End of made for you section -->
+
+    <!-- Songs -->
+    <div class="mb-8">
+        <h3 class="text-2xl text-white mb-4">
+            Let's play a song!
+        </h3>
+
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-400">
+                <tbody id="songLists">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End of songs -->
 </div>
+
+<script>
+    async function getAllSongs() {
+        try {
+            const response = await fetch('/api/v1/songs');
+            const songs = await response.json();
+
+            let html = '';
+            songs.data.forEach((song, index) => {
+                html += `
+                <tr class="border-b bg-zinc-900 border-zinc-800">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white" onclick="togglePlay('myAudio${song.id}')">
+                        ${index + 1}
+                        <audio id="myAudio${song.id}" preload="auto" src="${song.url}"></audio>
+                    </th>
+                    <td class="px-6 py-4">
+                        ${song.title}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${song.total_listings}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${song.duration}
+                    </td>
+                    <td class="px-6 py-4">
+                        <button id="multiLevelDropdownButton${song.id}" data-dropdown-toggle="dropdown${song.id}" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="w-5 h-5">
+                                <path d="M3 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdown${song.id}"
+                             class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-200" aria-labelledby="multiLevelDropdownButton${song.id}">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Add to favorites</a>
+                                </li>
+                                <li>
+                                    <button id="doubleDropdownButton${song.id}" data-dropdown-toggle="doubleDropdown${song.id}"
+                                            data-dropdown-placement="right-start" type="button"
+                                            class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-600 hover:text-white">
+                                        Add to Playlists
+                                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="2" d="m1 9 4-4-4-4"/>
+                                        </svg>
+                                    </button>
+                                    <div id="doubleDropdown${song.id}"
+                                         class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-200 add-to-playlist"
+                                            data-song-id="${song.id}"
+                                            aria-labelledby="doubleDropdownButton${song.id}">
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                `;
+            })
+
+            document.querySelector('#songLists').innerHTML = html;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    getAllSongs();
+
+    async function addToPlaylist(id, link) {
+        const ulParent = link.parentNode.parentNode;
+
+        const songID = ulParent.getAttribute('data-song-id');
+
+        // post song into playlist using fetch
+        try {
+            const response = await fetch('/api/v1/playlistSong/' + id + '/songs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    song_id: songID
+                })
+            });
+
+            const result = await response.json();
+            console.log("Success:", result);
+
+            window.location.replace("/playlists/" + id);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    function togglePlay(src) {
+        const audio = document.getElementById(src);
+
+        return audio.paused ? audio.play() : audio.pause();
+    }
+</script>
 
 <%- include('layouts/footer'); -%>
