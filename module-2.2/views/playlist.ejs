@@ -1,0 +1,71 @@
+<%- include('layouts/header'); -%>
+<div class="p-4">
+    <h1 class="font-light text-3xl text-white" id="playlistTitle"></h1>
+
+    <div class="mt-8">
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-400">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function getPlaylists() {
+        try {
+            const response = await fetch(`/api/v1/playlistSong/<%= playlistId %>`);
+            const playlist = await response.json();
+
+            document.getElementById('playlistTitle').innerHTML = playlist.data.name;
+
+            // loop through each song in the playlist
+            let html = '';
+            playlist.data.songs.forEach((song, index) => {
+                // read the artists array and create a string of artist names
+                let artistNames = '';
+
+                song.artists.forEach((artist, index) => {
+                    artistNames += artist.name;
+                    if (index < song.artists.length - 1) {
+                        artistNames += ', ';
+                    }
+                });
+
+                html += `
+                <tr class="border-b bg-zinc-900 border-zinc-800 cursor-pointer" onclick="togglePlay('myAudio${song.id}')">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                        ${index + 1}
+                        <audio id="myAudio${song.id}" preload="auto" src="${song.url}"></audio>
+                    </th>
+                    <td class="px-6 py-4">
+                        <div class="text-white">${song.title}</div>
+                        <div class="block text-xs text-gray-500 w-24 truncate">${artistNames}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        ${song.total_listings}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${song.duration}
+                    </td>
+                </tr>
+                `;
+            })
+
+            document.querySelector('tbody').innerHTML = html;
+        } catch (error) {
+            console.error(`ERROR: ${error.message}`);
+        }
+    }
+
+    getPlaylists();
+
+    function togglePlay(src) {
+        const audio = document.getElementById(src);
+
+        return audio.paused ? audio.play() : audio.pause();
+    }
+</script>
+
+<%- include('layouts/footer'); -%>

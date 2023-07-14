@@ -2,20 +2,23 @@
   {
     "id": 1,
     "title": "Island Village",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
-    "total_listings": 1213,
+    "url": "https://www.sousound.com/music/healing/healing_01.mp3",
+    "total_listings": "1,213,121",
     "duration": "2.04",
     "artists": [
       {
         "name": "Jamie Christopher"
+      },
+      {
+        "name": "Somebody Else"
       }
     ]
   },
   {
     "id": 2,
     "title": "Anything You Want",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
-    "total_listings": 912,
+    "url": "https://www.sousound.com/music/healing/healing_02.mp3",
+    "total_listings": "2,313,121",
     "duration": "3.56",
     "artists": [
       {
@@ -26,7 +29,7 @@
   {
     "id": 3,
     "title": "The Way You Are",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_03.mp3",
     "total_listings": 812,
     "duration": "4.12",
     "artists": [
@@ -38,7 +41,7 @@
   {
     "id": 4,
     "title": "Asmalibrasi",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_04.mp3",
     "total_listings": 812,
     "duration": "4.15",
     "artists": [
@@ -50,7 +53,7 @@
   {
     "id": 5,
     "title": "Memories",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_05.mp3",
     "total_listings": 12312,
     "duration": "4.26",
     "artists": [
@@ -62,7 +65,7 @@
   {
     "id": 6,
     "title": "Dancing Queen",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_06.mp3",
     "total_listings": 1213,
     "duration": "3.50",
     "artists": [
@@ -74,7 +77,7 @@
   {
     "id": 7,
     "title": "Komang",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_07.mp3",
     "total_listings": 9212,
     "duration": "3.43",
     "artists": [
@@ -86,7 +89,7 @@
   {
     "id": 8,
     "title": "Atlantis",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_01.mp3",
     "total_listings": 3212,
     "duration": "3.49",
     "artists": [
@@ -98,7 +101,7 @@
   {
     "id": 9,
     "title": "Strong",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_02.mp3",
     "total_listings": 121,
     "duration": "3.04",
     "artists": [
@@ -110,7 +113,7 @@
   {
     "id": 10,
     "title": "Bauklotze",
-    "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "url": "https://www.sousound.com/music/healing/healing_03.mp3",
     "total_listings": 12312,
     "duration": "3.56",
     "artists": [
