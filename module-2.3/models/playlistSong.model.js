@@ -12,10 +12,6 @@ function getPlaylistSongsByPlaylistId(id) {
     return playlistSongModel.filter(playlistSong => playlistSong.playlistId === id);
 }
 
-// get songs in the playlist
-// get songs in the playlist
-
-
 module.exports = {
     getPlaylistSongsByPlaylistId
 };
