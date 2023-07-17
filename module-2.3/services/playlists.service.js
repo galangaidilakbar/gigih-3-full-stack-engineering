@@ -1,15 +1,15 @@
-const {getPlaylists} = require('../models/playlists.model');
+const {getAllPlaylists} = require('../models/playlists.model');
 const {getPlaylistSongsByPlaylistId} = require('../models/playlistSong.model');
 const {getAllSongs} = require('../models/songs.model');
 
 // GET all playlists
-function getAllPlaylists() {
-    return getPlaylists();
+function get() {
+    return getAllPlaylists();
 }
 
-const getPlaylistById = (id, sort = undefined) => {
+const find = (id, sort = undefined) => {
     // Get playlist by id
-    const playlist = getPlaylists().find(playlist => playlist.id === id);
+    const playlist = getAllPlaylists().find(playlist => playlist.id === id);
 
     // Throw error if playlist not found
     if (!playlist) {
@@ -44,5 +44,5 @@ const getPlaylistById = (id, sort = undefined) => {
 }
 
 module.exports = {
-    getAllPlaylists, getPlaylistById
+    get, find
 }

@@ -11,10 +11,10 @@ const playlistsModel = [
     {id: 10, name: 'Daily Mix 10'},
 ]
 
-function getPlaylists() {
+function getAllPlaylists() {
     return playlistsModel;
 }
 
 module.exports = {
-    getPlaylists
+    getAllPlaylists
 }
