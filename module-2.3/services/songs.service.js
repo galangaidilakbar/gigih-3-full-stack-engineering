@@ -1,5 +1,10 @@
 const {getAllSongs, getSongById, storeSong} = require('../models/songs.model');
 
+/* get all songs */
+function get() {
+    return getAllSongs();
+}
+
 /* find a song by id */
 function find(id) {
     // if no id is provided, throw an error
@@ -59,5 +64,5 @@ function getMostPlayedSongs() {
 
 /* export the functions */
 module.exports = {
-    find, store, getMostPlayedSongs
+    get, find, store, getMostPlayedSongs
 }

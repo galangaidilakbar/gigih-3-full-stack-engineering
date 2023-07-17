@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {getAllSongs} = require('../models/songs.model');
-const {find, store, getMostPlayedSongs} = require('../services/songs.service');
+const {get, find, store, getMostPlayedSongs} = require('../services/songs.service');
 
 /* GET all songs. */
 router.get('/', function (req, res) {
-    return res.json(getAllSongs());
+    return res.json(get());
 });
 
 /* GET most played songs. */
