@@ -58,11 +58,7 @@ function store(name, url, duration, artists) {
 }
 
 /* get most played songs */
-function getMostPlayedSongs() {
-    return getAllSongs().sort((a, b) => b?.playCount - a?.playCount);
-}
-
 /* export the functions */
 module.exports = {
-    get, find, store, getMostPlayedSongs
+    get, find, store
 }
