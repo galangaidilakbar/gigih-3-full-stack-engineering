@@ -20,6 +20,39 @@ const songsModel = [
             {name: 'Artist 1'},
             {name: 'Artist 2'},
         ],
+    },
+    {
+        id: 3,
+        name: 'Song 3',
+        url: "https://www.sousound.com/music/healing/healing_03.mp3",
+        playCount: 123,
+        duration: 3.23,
+        artist: [
+            {name: 'Artist 1'},
+            {name: 'Artist 2'},
+        ],
+    },
+    {
+        id: 4,
+        name: 'Song 4',
+        url: "https://www.sousound.com/music/healing/healing_04.mp3",
+        playCount: 12,
+        duration: 3.23,
+        artist: [
+            {name: 'Artist 1'},
+            {name: 'Artist 2'},
+        ],
+    },
+    {
+        id: 5,
+        name: 'Song 5',
+        url: "https://www.sousound.com/music/healing/healing_05.mp3",
+        playCount: 1,
+        duration: 3.23,
+        artist: [
+            {name: 'Artist 1'},
+            {name: 'Artist 2'},
+        ],
     }
 ];
 
