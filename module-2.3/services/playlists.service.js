@@ -1,5 +1,5 @@
 const {getAllPlaylists} = require('../models/playlists.model');
-const {getPlaylistSongsByPlaylistId} = require('../models/playlistSong.model');
+const {getPlaylistSongsByPlaylistId, getAllPlaylistSongs, playlistSongModel} = require('../models/playlistSong.model');
 const {getAllSongs} = require('../models/songs.model');
 
 // GET all playlists
@@ -7,6 +7,7 @@ function get() {
     return getAllPlaylists();
 }
 
+// GET playlist by id
 const find = (id, sort = undefined) => {
     // Get playlist by id
     const playlist = getAllPlaylists().find(playlist => playlist.id === id);
@@ -43,6 +44,18 @@ const find = (id, sort = undefined) => {
     return playlistSongs.length === 0 ? playlist : playlistWithSongs;
 }
 
+// POST song to playlist
+const addSong = (playlistId, songId) => {
+    const newSongInPlaylist = {
+        playlistId: playlistId,
+        songId: songId
+    };
+
+    playlistSongModel.push(newSongInPlaylist);
+
+    return true;
+}
+
 module.exports = {
-    get, find
+    get, find, addSong
 }

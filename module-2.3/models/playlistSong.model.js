@@ -13,5 +13,5 @@ function getPlaylistSongsByPlaylistId(id) {
 }
 
 module.exports = {
-    getPlaylistSongsByPlaylistId
+    getPlaylistSongsByPlaylistId, playlistSongModel
 };
