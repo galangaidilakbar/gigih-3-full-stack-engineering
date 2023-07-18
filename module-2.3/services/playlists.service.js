@@ -1,5 +1,5 @@
 const {getAllPlaylists} = require('../models/playlists.model');
-const {getPlaylistSongsByPlaylistId, getAllPlaylistSongs, playlistSongModel} = require('../models/playlistSong.model');
+const {getPlaylistSongsByPlaylistId, playlistSongModel} = require('../models/playlistSong.model');
 const {getAllSongs} = require('../models/songs.model');
 
 // GET all playlists
