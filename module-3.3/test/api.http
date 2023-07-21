@@ -1,0 +1,30 @@
+POST http://127.0.0.1:3000/api/post HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Sample Movie 1"
+}
+
+###
+
+GET http://127.0.0.1:3000/api/getAll
+
+
+###
+
+GET http://127.0.0.1:3000/api/get/64ba7753881696466189b8d6
+
+
+###
+
+PATCH http://127.0.0.1:3000/api/update/64ba7753881696466189b8d6
+Content-Type: application/json
+
+{
+  "title": "Sample Movie 2",
+  "year": 2019
+}
+
+###
+
+DELETE http://127.0.0.1:3000/api/delete/64ba7753881696466189b8d6
