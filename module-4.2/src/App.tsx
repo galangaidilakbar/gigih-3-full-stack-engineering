@@ -1,7 +1,7 @@
-import ListName from "./components/ListName.tsx";
+import ListName, {ListNameProps} from "./components/ListName.tsx";
 
 export default function App() {
-    const listName: { name: string, gender: "male" | "female" }[] = [
+    const listName: ListNameProps[] = [
         {name: "Galang", gender: "male"},
         {name: "Nela", gender: "female"},
         {name: "Derby", gender: "female"},

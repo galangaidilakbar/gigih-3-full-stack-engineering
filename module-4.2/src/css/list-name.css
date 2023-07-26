@@ -1,7 +1,13 @@
 .blue{
-    color: blue;
+    color: midnightblue;
 }
 
 .pink{
-    color: pink;
+    color: lightcoral;
+}
+
+.list-item{
+    list-style: none;
+    font-size: 1rem;
+    padding: 20px 0;
 }
