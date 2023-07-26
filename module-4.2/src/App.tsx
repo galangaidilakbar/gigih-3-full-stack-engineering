@@ -1,10 +1,22 @@
-import Avatar from "./components/Avatar.tsx";
+import ListName from "./components/ListName.tsx";
 
 export default function App() {
+    const listName: { name: string, gender: "male" | "female" }[] = [
+        {name: "Galang", gender: "male"},
+        {name: "Nela", gender: "female"},
+        {name: "Derby", gender: "female"},
+        {name: "Fandi", gender: "male"},
+        {name: "Yuda", gender: "male"},
+        {name: "Dewi", gender: "female"},
+        {name: "Anita", gender: "female"},
+    ]
     return (
         <div>
-            <Avatar imageUrl={"https://avatars.githubusercontent.com/u/26488963?v=4"}/>
-            <Avatar imageUrl={"https://avatars.githubusercontent.com/u/26488963?v=4"} name={"Galang"}/>
+            <ul>
+                {listName.map((item, index) => (
+                    <ListName name={item.name} gender={item.gender} key={index}/>
+                ))}
+            </ul>
         </div>
     );
 }
